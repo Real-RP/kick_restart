@@ -11,15 +11,21 @@
 --]]
 
 debug.cfg = true --gives acces to use /checkperms, that will show if you are allowed to use the restart ressource or not.
-debug.msg = false --gives a error message for players that are not allowed for a restart.
+debug.msg = true --gives a error message for players that are not allowed for a restart.
 
 -- end of config
 
+pos = GetEntityCoords(playerPed, -1) --not sure if this works, please write back if you find out, I have no one else to test it...
+
 RegisterCommand("beginrestart", function(source, args, rawCommand)
     if IsPlayerAceAllowed(source, "restart.cmds") then
+	if pos ~= nil then
         	DropPlayer(source, "All Roleplay situations ended automatically. Your progress has been saved. Reason: Server restart.") --translate
     elseif debug.msg then
         TriggerClientEvent("chatMessage", source, "^1Insufficient Permissions.") --translate --do not translate "chatMessage" !!!!
+	else
+		TriggerClientEvent("chatMessage", source, "^1An Error happens")
+		end
 	end
 end)
 

@@ -3,9 +3,7 @@ put the resource folder into your
 > resources 
 
 folder. clear the -master and v.NUMBER from the foldername.
-if you want to translate this code, go into the locales folder and read
-the README.txt or README.md file.
-
+if you want to translate this code, go into the server.lua
 # setup resource
 
 paste "start kick_restart" into your server.cfg.

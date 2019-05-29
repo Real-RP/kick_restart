@@ -20,3 +20,8 @@ add_principal identifier.steam:HEXID group.restart ##this will give a specified 
 
 ##You need to paste your Steam HexID into "HEXID"
 ## everything else can get asked in the original topic.
+
+
+##coming soon:##
+
+adding the ability to restart your server with a restart planner.

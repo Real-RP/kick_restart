@@ -1,7 +1,7 @@
 -- CONFIGURATION--
 
 -- this will kick players after they do a while nothing (in seconds)
-Kicktime = 1 --leave on 1 second to make a fast restart, or 0 seconds to make a instant restart.
+Kicktime = 0 --set on 1 second to only kick players that have done their RP situations (when they don't move), or 0 seconds to make a instant restart.
 
 --Do not edit if you do not know what you do--
 --											--
@@ -13,7 +13,13 @@ Kicktime = 1 --leave on 1 second to make a fast restart, or 0 seconds to make a 
 					
 --locales in server.lua
 
-
+AddEventHandler("playerSpawned", function(display)
+	TriggerEvent('chat:addSuggestion', '/planrestart', 'HOUR:MINUTE:SECOND')
+	TriggerEvent('chat:addSuggestion', '/stopplan', 'if a reboot has been scheduled, it will be canceled')
+	TriggerEvent('chat:addSuggestion', '/kcheckperms', 'Check if you have the rights to use '..GetCurrentResourceName())
+	TriggerEvent('chat:addSuggestion', '/closeconnect', 'closes the connection of users to the server if they want to reconnect')
+	TriggerEvent('chat:addSuggestion', '/dorestart', 'Do a direct restart')
+end)
 					
 Citizen.CreateThread(function()
 	while true do

@@ -11,13 +11,15 @@
 --]]
 
 lang = 'de' -- languages are: en = english, de = deutsch, fr = français
+local timebeforenextconnect = 15 --time in seconds before the next can connect after a planned restart
 userestartplanner = false --change to true to activate the table planner below:
 
-restarttimes = {	'17:25:00', '18:00:00'	} --add your restart times here. [FORMAT: HOUR:MINUTE:SECOND]
+restarttimes = {'21:58:00', '21:58:30'} --add your restart times here. [FORMAT: HOUR:MINUTE:SECOND]
 
 
 debug.cfg = true --gives acces to use /checkperms, that will show if you are allowed to use the restart ressource or not.
 debug.msg = true --gives a error message for players that are not allowed for a restart.
+debug.time = false --change to true to print the time in the console as a debug test.
 -------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -71,33 +73,52 @@ end
 -- end of config
 
 local kick = false
+local stopconnect = false
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(500) --every half second
+		Citizen.Wait(0) --every half of a half second
 		
-		for i=1, #restarttimes, 1 do
-			if restarttimes[i] == os.date("%X") then
-				kick = true
-			else
-				Wait(10000)
-				kick = false
+		if userestartplanner = true then
+			for i=1, #restarttimes, 1 do
+				if restarttimes[i] == os.date("%X") then
+					stopconnect = true
+					kick = true
+				end
 			end
 		end
 		
 	end
 end)
 
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(1000)
+		
+		if debug.time = true then
+			print(os.date("%X"))
+		end
+	end
+end)
+
 RegisterCommand("dorestart", function(source, args, rawCommand)
     if IsPlayerAceAllowed(source, "restart.cmds") then
 		kick = true
-		Wait(10000)
-		--os.execute("kick_restart.bat")
+		stopconnect = true
 	else
 		TriggerClientEvent("chatMessage", source, permissions)
 	end
 end)
 
+AddEventHandler("playerConnecting", function(playerName, setKickReason, deferrals)
+	if stopconnect == true then
+			deferrals.done(kick_message_before_join)
+			Wait(timebeforenextconnect * 1000)
+			stopconnect = false
+	else
+			deferrals.done()
+	end
+end)
 
 RegisterServerEvent("kickForRestart")
 AddEventHandler("kickForRestart", function()
@@ -161,6 +182,7 @@ end)
 							wantedtime = args
 							if wantedtime == os.date("%X") then
 							kick = true
+							stopconnect = true
 									Wait(1000)
 				
 									--os.execute("restart.bat")

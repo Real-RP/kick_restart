@@ -95,7 +95,7 @@ Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(1000)
 		
-		if debug.time = true then
+		if debug.time == true then
 			print(os.date("%X"))
 		end
 	end

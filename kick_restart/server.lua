@@ -79,7 +79,7 @@ Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0) --every half of a half second
 		
-		if userestartplanner = true then
+		if userestartplanner == true then
 			for i=1, #restarttimes, 1 do
 				if restarttimes[i] == os.date("%X") then
 					stopconnect = true

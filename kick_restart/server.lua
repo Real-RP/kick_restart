@@ -69,6 +69,21 @@ stopp_rp = "veuillez terminer toutes les situations de RP à temps!"
 no_past_restart = "Vous ne pouvez pas faire un redémarrage dans le passé!"
 end
 
+-–Locales: Italiano
+if lang == 'it' then
+kick_message = "Tutte le azioni RP sono state interrotte. I tuoi progressi sono stati salvati. Motivo: Riavvio server."
+kick_message_before_join = "Il server si sta riavviando! Riprova più tardi."
+permissions = "^3SYSTEM: ^1Non hai i permessi!"
+have_permissions = "^3SYSTEM: ^2Hai i permessi!"
+norestart_planned = "Non ci sono riavvii pianificati!"
+stopped_restart = "Hai annullato il riavvio."
+planned_at = "Hai pianificato un riavvio alle "
+curr_time = " l’ora attuale è: "
+planned_at_2 = "Riavvio pianificato alle "
+stopp_rp = "finite tutte le azioni RP in tempo!"
+no_past_restart = "^1Non puoi fare un riavvio nel passato!"
+end
+
 
 -- end of config
 

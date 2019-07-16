@@ -106,15 +106,6 @@ Citizen.CreateThread(function()
 	end
 end)
 
-RegisterCommand("test", function(source)
-	for i = 0, 255 do
-		local ped = GetPlayerPed(-1)
-	end
-	if ped ~= nil then
-		print(ped)
-	end
-end)
-
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(1000)

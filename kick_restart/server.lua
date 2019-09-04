@@ -69,7 +69,7 @@ stopp_rp = "veuillez terminer toutes les situations de RP à temps!"
 no_past_restart = "Vous ne pouvez pas faire un redémarrage dans le passé!"
 end
 
--–Locales: Italiano
+--Locales: Italiano
 if lang == 'it' then
 kick_message = "Tutte le azioni RP sono state interrotte. I tuoi progressi sono stati salvati. Motivo: Riavvio server."
 kick_message_before_join = "Il server si sta riavviando! Riprova più tardi."

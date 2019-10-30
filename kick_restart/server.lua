@@ -13,13 +13,12 @@
 lang = 'de' -- languages are: en = english, de = deutsch, fr = français
 local timebeforenextconnect = 15 --time in seconds before the next can connect after a planned restart
 userestartplanner = true --change to true to activate the table planner below:
-
 restarttimes = {'22:59:00', '22:59:30'} --add your restart times here. [FORMAT: HOUR:MINUTE:SECOND]
 
 
 debug.cfg = true --gives acces to use /checkperms, that will show if you are allowed to use the restart ressource or not.
 debug.msg = true --gives a error message for players that are not allowed for a restart.
-debug.time = true --change to true to print the time in the console as a debug test.
+debug.time = false --change to true to print the time in the console as a debug test.
 -------------------------------------------------------------------------------------------------------------------------------------
 
 
